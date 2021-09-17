@@ -1,0 +1,212 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+    <head>
+        <style type="text/css">
+            .auto-style1 {
+                width: 30%;
+                height: 400px;
+            }
+
+            .auto-style3 {
+                width: 70%;
+                height: 400px;
+            }
+        </style>
+        <style>
+            .info {
+                background-image: url("~/web/images/c3.jpg");
+            }
+
+            .map {
+                background-image: url("~/web/images/map.png");
+            }
+
+            .menu {
+                background-image: url("images/cb2.png");
+                width: 100%;
+                height: 100%;
+            }
+
+            .pic {
+                padding: 25px;
+                width: 470px;
+                height: 580px;
+            }
+
+            /*.default {
+                background-image: url("images/cb3.jpg");
+            }*/
+
+            .table tr:nth-child(even) {
+                background-color: rgba(0, 0, 0, 0.95);
+                color: aliceblue;
+            }
+
+            .table tr:nth-child(odd) {
+                background-color: #FAFAFA;
+            }
+
+            .table {
+                border: 1px solid #666;
+                border-collapse: collapse;
+                font-family: 華康娃娃體;
+                font-size: larger;
+                width: 932px;
+                height: 338px;
+            }
+
+                .table tr, .table td {
+                    border: 1px solid #666;
+                }
+
+                    .table td:hover {
+                        background-color: cornflowerblue;
+                    }
+
+            .home {
+                background-image: url("images/home(2).jpg");
+                height: 515px;
+            }
+
+            .box-2 {
+                background: rgba(0,0,0,0.6);
+                margin-bottom: 10px;
+            }
+
+            .content {
+                background-image: url("images/cat.jpg");
+                font-family: 華康娃娃體;
+                font-size: larger;
+                width: 70%;
+            }
+
+                .content ul li {
+                    list-style-type: none;
+                }
+
+            .a {
+                background: rgba(0, 9, 59, 0.85);
+            }
+
+            .auto-style3 {
+                width: 70%;
+                height: 400px;
+            }
+
+            .back {
+                width: 100%;
+                background-image: url("images/cb3.jpg");
+            }
+
+            .auto-style4 {
+                width: 30%;
+                background: rgba(0, 9, 59, 0.9);
+                font-family: 華康娃娃體;
+            }
+        </style>
+        <script>
+            function Button1_Click()
+        {
+
+            Panel1.Visible = true;
+            if (TxtPassword.Text == "mcu")
+            {
+                Session["theUserName"] = TxtAccount.Text;
+                Session["theUserPass"] = TxtPassword.Text;
+                Message.Text = "登入成功";
+                Panel1.Visible = false;
+            }
+            else
+            {
+                Message.Text = "帳號或密碼錯誤";
+            }
+
+        }
+        </script>
+    </head>
+    <body style="width:100%">
+        
+        <form id="form1" runat="server">
+            <div style="width:100%">
+                <table class="back">
+                    <tr>
+                        <td colspan="2" align="left" valign="middle" class="a">
+                            <img alt="" class="auto-style1" src="images/logo.png" /><img alt="" class="auto-style3" src="images/c4.jpg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <marquee style=" font-family: 華康娃娃體;
+        text-align: justify;
+        text-decoration: underline;
+        text-indent: 50px;
+        background: rgba(0, 9, 59, 0.75);
+        color: white;
+        font-size: 28px;
+        font-weight: 100
+">Spring Day Pet Cafe (設計人 ➠ 07131331 劉雁茹)</marquee><br />
+
+
+                        </td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+                                <div align="center" style="height:80%;text-align:center;padding:50px;width:100%;" class="default">
+                                    <table class="table">
+                                        <tr>
+                                            <td><img style="height:150px;width:220px" src="images/c1.jpg" /></td>
+                                            <td><img style="height:150px;width:220px" src="images/c7.jpg" /></td>
+                                            <td><img style="height:150px;width:220px" src="images/c5.jpg" /></td>
+                                            <td><img style="height:150px;width:220px" src="images/c11.jpg" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height:150px;width:220px">
+                                                店貓駐店<br />
+                                                歡迎前來吸貓
+                                            </td>
+                                            <td style="height:150px;width:220px">
+                                                寵物美容採預約制<br />
+                                                以確保服務品質<br />
+                                                美容專線：0906-849-987
+                                            </td>
+                                            <td style="height:150px;width:220px">
+                                                提供寵物餐點<br />
+                                                當天現點手作, 限量供應<br />
+                                                口味請洽店員
+                                            </td>
+                                            <td style="height:150px;width:220px">
+                                                免費 WIFI 與充電<br />
+                                                不另外收取費用 ,<br />
+                                                假日依人潮限制用餐時間
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </asp:Content>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="auto-style3" style="text-align:center; height:60px; color: #FFFFFF; background-color: #000000">
+                            07131331<br />
+                            版權所有
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </form>
+    </body>

@@ -1,0 +1,203 @@
+﻿@page
+@model AspNetetCore_RazorPage_database_07131331.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<style>
+    .font {
+        font-family: 微軟正黑體;
+    }
+
+    .n ul {
+        text-align: center;
+        list-style: none;
+        padding-left: 0;
+        padding-top: 0;
+        margin-top: 0;
+        margin-bottom: 22px;
+        overflow: hidden;
+        height: 100%;
+    }
+
+        .n ul li {
+            font-family: 華康娃娃體;
+            position: relative;
+            display: inline-block;
+            background-color: darkslateblue;
+            transition: background 3s;
+            border-radius: 20px;
+            width: 100%;
+            margin-left: 35px;
+            line-height: 1.5;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .n ul a {
+            display: block;
+            color: ivory;
+            transition: color .3s;
+            font-size: 25px;
+            font-weight: 200;
+        }
+
+        .n ul li:hover {
+            background: mediumorchid;
+            transition: background 0.45s;
+        }
+
+            .n ul li:hover a:active, li {
+                color: tomato;
+            }
+
+    .n {
+        position: relative;
+        width: 50vw;
+        min-width: 320px;
+        height: 200px;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+        .n h2 {
+            font-family: 華康娃娃體;
+            position: relative;
+            background: blue;
+            height: 40px;
+            font-weight: 200;
+            color: ivory;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex: 1;
+            transition: all .4s;
+            box-shadow: 4px 4px 20px -2px rgba(0,0,0,.35);
+            border-radius: 2px;
+        }
+
+        .n:hover h2 {
+            transform: translateY(-2px);
+            box-shadow: 2px 2px 5px -1px rgba(0,0,0,.35);
+        }
+
+    #T:checked ~ ul {
+        height: 0%;
+    }
+
+    .input {
+        height: 40px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    
+</style>
+<script>
+    function pic(id) {
+        if (id < 16) return "images/c" + id + ".jpg";
+        else
+            return "images/caticon.png";
+    }
+</script>
+
+@*<h1 class="font" style="color:aliceblue;text-align:center">留言板</h1>*@
+
+@*<p>
+        <a asp-page="Create" style="text-align:center;">新增留言</a>
+</p>*@
+
+@*<div class="card-deck">*@
+
+<body style="background: rgba(0, 9, 59, 0.85);">
+    
+    <nav class="n" style="margin-top:auto">
+        <h2>小春日和</h2>
+        <input class="input" id="T" type="checkbox" checked />
+        <ul>
+            <li><a href="https://www.facebook.com/SpringDayPetShopCafe/">Facebook</a></li>
+            <li><a href="https://www.instagram.com/springday_petcafe/">Instagram</a></li>
+            <li><a href="https://reurl.cc/kdWbGL">Google Map</a></li>
+        </ul>
+        <img src="~/images//logo.png" />
+    </nav>
+    
+    @foreach (var item in Model.Cat)
+    {
+        <div class="card font" style="width: 70%; margin-left: 15%; margin-bottom: 5px; ">
+            <div class="card-header text-center" style="color:white;background-color:darkslateblue">
+                <h3>@item.Title</h3>
+            </div>
+            <div class="text-center" style="background-color:antiquewhite">
+                @Html.DisplayNameFor(model => model.Cat[0].ReleaseDate) :
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                <br />
+                @Html.DisplayNameFor(model => model.Cat[0].Content) :
+                @Html.DisplayFor(modelItem => item.Content)
+                <br />
+                @Html.DisplayNameFor(model => model.Cat[0].Rate) :
+                @Html.DisplayFor(modelItem => item.Rate)
+
+
+            </div>
+            <img width="500" height="380" class="card-img-top" src=@("images/c"+item.ID+".jpg") alt="Sample" />
+
+            <div class="card-footer text-center" style="color:white;background-color:cornsilk">
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-primary">View</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</body>
+@*</div>*@
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cat[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cat[0].ReleaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cat[0].Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cat[0].Rate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Cat) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+*@
